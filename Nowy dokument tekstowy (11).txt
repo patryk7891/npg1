@@ -1,0 +1,31 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+class Base
+{
+public:
+   static int N;
+   static void printN() {cout << N << endl;}
+};
+ 
+int Base::N = 0;
+ 
+struct Test: private Base
+{
+   Test() {N++;}
+   Test(const Test &Obj) {N++;}
+   ~Test() {N--;}
+};
+ 
+int main()
+{
+   Test A, B;
+   //A.N;     <= b³¹d
+   {
+      Test C;
+      Base::printN();
+   }
+   Base::printN();
+   getchar();
+}
