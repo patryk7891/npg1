@@ -1,0 +1,148 @@
+#include <iostream>
+#include <conio.h>
+ 
+ 
+using namespace std;
+ 
+ 
+char plansza[30][30];
+char map[40][20];
+ 
+ 
+/////////////// WYPISZ
+void wypisz()
+{
+for(int i=0; i<30; i++)
+{
+for(int n=0; n<30; n++)
+{
+cout << plansza[i][n] << " ";
+if(n==29) cout << "\n";
+}}}
+ 
+ 
+/////////////// ZERUJ
+void zeruj()
+  {
+  for(int i=0; i<20; i++)
+  {
+   for(int n=0; n<20; n++)
+   {
+          plansza[i][n] = 0;
+}}}
+ 
+ 
+///////////////// ŒCIANY
+void sciany(char tab[][30], int x, int y)
+{
+     for(int i=0; i<x; i++){
+             if(i==(x-1) || i==0){
+             for(int j=0; j<y; j++){
+             tab[i][j] = 'X';     
+             }}
+             else{
+             tab[i][0]='X';
+             tab[i][(y-1)]='X';     
+             }}
+     
+}
+///////////////////MAIN
+main()
+{
+     
+      plansza[5][5] = 'O';
+      char znak;
+      int x=5;
+      int y=5;
+      plansza[4][3] = 'x';
+      plansza[18][11] = 'x';
+      plansza[12][9] = 'x';
+      plansza[2][16] = 'x';
+     
+      sciany(plansza,30,30);
+      for(;znak!='k';)
+      {
+ 
+ 
+      wypisz();
+      znak = getch();
+      system("CLS");
+      plansza[x][y]=0;
+//UPWARD----------------------------------------------------------     
+      if(znak=='w' && plansza[x-1][y]==0) if(x!=0){
+                                                   x--;
+                                                    if(plansza[x+2][y]=='o') {
+                                                                             plansza[x+1][y]='o';
+                                                                             plansza[x+2][y]=0;
+                                                                             }
+                                                   plansza[x][y]='^';
+                   }
+      if(znak=='w' && plansza[x-1][y]=='x') if(x!=0){
+                                                   plansza[x][y]='^';
+                                                    plansza[x+1][y]='o';
+                                                    plansza[x-1][y]=0;   
+                   }
+      if(znak=='w' && plansza[x-1][y]=='X') if(x!=0){
+                                                   plansza[x][y]='^';
+                   }
+//DOWNWARD---------------------------------------------------------  
+      if(znak=='s' && plansza[x+1][y]==0) if(x!=29){
+                                                    x++;  
+                                                    if(plansza[x-2][y]=='o') {
+                                                                             plansza[x-1][y]='o';
+                                                                             plansza[x-2][y]=0;
+                                                                             }
+                                                    plansza[x][y]='V';
+    
+                   }
+      if(znak=='s' && plansza[x+1][y]=='x') if(x!=29){
+                                                      x++;
+                                                    plansza[x][y]='V';
+                                                    plansza[x-1][y]='o';
+                                                    plansza[x+1][y]=0;
+                   }  
+      if(znak=='s' && plansza[x+1][y]=='X') if(x!=29){
+                                                    plansza[x][y]='V';
+                   }                    
+//LEFT---------------------------------------------------------------  
+      if(znak=='a' && plansza[x][y-1]==0) if(y!=0){
+                                                   y--;
+                                                    if(plansza[x][y+2]=='o') {
+                                                                             plansza[x][y+1]='o';
+                                                                             plansza[x][y+2]=0;
+                                                                             }   
+                                                   plansza[x][y]='<';
+                   }
+      if(znak=='a' && plansza[x][y-1]=='x') if(y!=0){
+                                                     y--;
+                                                   plansza[x][y]='<';
+                                                    plansza[x][y+1]='o';
+                                                    plansza[x][y-1]=0; 
+                   }   
+      if(znak=='a' && plansza[x][y-1]=='X') if(y!=0){
+                                                   plansza[x][y]='<';
+                   }                            
+//RIGHT---------------------------------------------------------------   
+      if(znak=='d' && plansza[x][y+1]==0) if(y!=29){
+                                                    y++;
+                                                    if(plansza[x][y-2]=='o') {
+                                                                             plansza[x][y-1]='o';
+                                                                             plansza[x][y-2]=0;
+                                                                             } 
+                                                    plansza[x][y]='>';
+                   }
+      if(znak=='d' && plansza[x][y+1]=='x') if(y!=29){
+                                                      y++;
+                                                    plansza[x][y]='>';
+                                                    plansza[x][y-1]='o';
+                                                    plansza[x][y+1]=0;
+                   }                   
+      if(znak=='d' && plansza[x][y+1]=='X') if(y!=29){
+                                                    plansza[x][y]='>';
+                   }    
+      }
+ 
+ 
+      system("PAUSE");
+}
+ 
