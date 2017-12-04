@@ -1,0 +1,40 @@
+void postaw_inny(int y,int x)
+{
+if(licznik_tab[licznik_komp-1]=='Y' || gora==true) 
+{
+        if(atab[y-1][x]=='X' && gora==false) {atab[y-1][x]='Y';gora=true;czypetla=false;jedynkax=true;}
+        else if (atab[y-1][x]==' ' && gora==false) {atab[y-1][x]='O';gora=true;czypetla=false;}
+        if(jedynkax==true && jedynkax2wchodz==true){
+        if(atab[y-2][x]=='X') { atab[y-2][x]='Y';jedynkax2=true;}
+        else if(atab[y-2][x]==' ') {atab[y-2][x]='O';jedynkax2=false;}
+        }
+        else if(jedynkax2==true && jedynkax2wchodz==true){
+                if(atab[y-3][x]=='X') { atab[y-3][x]='Y';jedynkax3=true;}
+                else if(atab[y-3][x]==' ') {atab[y-3][x]='O';jedynkax3=false;}
+        }
+        else if(jedynkax3==true){
+                if(atab[y-4][x]=='X') { atab[y-4][x]='Y';jedynkax4=true;}
+                else if(atab[y-4][x]==' ') {atab[y-4][x]='O';jedynkax4=false;}
+        }
+        
+        
+        if(gora==true && drugi==true){
+        if(atab[y+1][x]=='X') {atab[y+1][x]='Y';dol=true;}
+        else if(atab[y+1][x]==' '){atab[y+1][x]='O'; dol=true;}
+        }
+        if(gora==true && dol==true && trzy==true && lewo==false)
+        {
+                if(atab[y][x-1]=='X'){atab[y][x-1]='Y';lewo=true;}
+                else if(atab[y][x-1]==' '){atab[y][x-1]='O';lewo=true;}
+        }
+        if(gora==true && dol==true && lewo==true && cztery==true && prawo==false){
+        if(atab[y][x+1]=='X'){atab[y][x+1]='Y';prawo=true;czypetla=true;}
+                else if(atab[y][x+1]==' '){atab[y][x+1]='O';prawo=true;czypetla=true;}
+        }
+        wyswietl_komp();
+        sleep(2);
+        if(gora==true && drugi==false) drugi=true;
+        if(gora==true && dol==true && trzy==false) trzy=true;
+        if(gora==true && dol==true && lewo==true && cztery==false) cztery=true;
+        if(jedynkax==true && jedynkaxwchodz==false) jedynkaxwchodz=true;
+        if(jedynkax2==true && jedynkax2wchodz==false) jedynkax2wchodz=true;
