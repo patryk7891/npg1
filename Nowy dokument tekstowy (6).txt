@@ -1,0 +1,81 @@
+# przygotowanie nastêpnej generacji komórek, czyli zaktualizowanego POLA_GRY
+def przygotuj_populacje(polegry):
+    # na pocz¹tku tworzymy 2-wymiarow¹ listê wype³nion¹ zerami
+    nast_gen = [KOM_MARTWA] * KOM_POZIOM
+    for i in range(KOM_POZIOM):
+        nast_gen[i] = [KOM_MARTWA] * KOM_PION
+
+    # iterujemy po wszystkich komórkach
+    for y in range(KOM_PION):
+        for x in range(KOM_POZIOM):
+
+            # zlicz populacjê (¿ywych komórek) wokó³ komórki
+            populacja = 0
+            # wiersz 1
+            try:
+                if polegry[x - 1][y - 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+            try:
+                if polegry[x][y - 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+            try:
+                if polegry[x + 1][y - 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+
+            # wiersz 2
+            try:
+                if polegry[x - 1][y] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+            try:
+                if polegry[x + 1][y] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+
+            # wiersz 3
+            try:
+                if polegry[x - 1][y + 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+            try:
+                if polegry[x][y + 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+            try:
+                if polegry[x + 1][y + 1] == KOM_ZYWA:
+                    populacja += 1
+            except IndexError:
+                pass
+
+            # "niedoludnienie" lub przeludnienie = œmieræ komórki
+            if polegry[x][y] == KOM_ZYWA and (populacja < 2 or populacja > 3):
+                nast_gen[x][y] = KOM_MARTWA
+            # ¿ycie trwa
+            elif polegry[x][y] == KOM_ZYWA \
+                    and (populacja == 3 or populacja == 2):
+                nast_gen[x][y] = KOM_ZYWA
+            # nowe ¿ycie
+            elif polegry[x][y] == KOM_MARTWA and populacja == 3:
+                nast_gen[x][y] = KOM_ZYWA
+
+    # zwróæ nowe polegry z nastêpn¹ generacj¹ komórek
+    return nast_gen
+
+
+def rysuj_populacje():
+    """Rysowanie komórek (kwadratów) ¿ywych"""
+    for y in range(KOM_PION):
+        for x in range(KOM_POZIOM):
+            if POLE_GRY[x][y] == KOM_ZYWA:
+                pygame.draw.rect(OKNOGRY, (255, 255, 255), Rect(
+                    (x * ROZ_KOM, y * ROZ_KOM), (ROZ_KOM, ROZ_KOM)), 1)
