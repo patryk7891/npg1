@@ -3,7 +3,7 @@
  sasdasdasdasd
  asdasdasdasdsadfgsgadfghadrg
 using namespace std;
- 
+ dsasdasdasdasdd
  
 char plansza[30][30];
 char map[40][20];
