@@ -1,0 +1,36 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import pygame
+import sys
+import random
+from pygame.locals import *  # udostêpnienie nazw metod z locals
+
+# inicjacja modu³u pygame
+pygame.init()
+
+# szerokoœæ i wysokoœæ okna gry
+OKNOGRY_SZER = 800
+OKNOGRY_WYS = 400
+
+# przygotowanie powierzchni do rysowania, czyli inicjacja okna gry
+OKNOGRY = pygame.display.set_mode((OKNOGRY_SZER, OKNOGRY_WYS), 0, 32)
+# tytu³ okna gry
+pygame.display.set_caption('Gra o ¿ycie')
+
+# rozmiar komórki
+ROZ_KOM = 10
+# iloœæ komórek w poziomie i pionie
+KOM_POZIOM = int(OKNOGRY_SZER / ROZ_KOM)
+KOM_PION = int(OKNOGRY_WYS / ROZ_KOM)
+
+# wartoœci oznaczaj¹ce komórki "martwe" i "¿ywe"
+KOM_MARTWA = 0
+KOM_ZYWA = 1
+
+# lista opisuj¹ca stan pola gry, 0 - komórki martwe, 1 - komórki ¿ywe
+# na pocz¹tku tworzymy listê zawieraj¹c¹ KOM_POZIOM zer
+POLE_GRY = [KOM_MARTWA] * KOM_POZIOM
+# rozszerzamy listê o listy zagnie¿d¿one, otrzymujemy wiêc listê dwuwymiarow¹
+for i in range(KOM_POZIOM):
+    POLE_GRY[i] = [KOM_MARTWA] * KOM_PION
