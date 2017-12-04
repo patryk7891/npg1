@@ -1,0 +1,42 @@
+# zmienne steruj¹ce wykorzystywane w pêtli g³ównej
+zycie_trwa = False
+przycisk_wdol = False
+
+# pêtla g³ówna programu
+while True:
+    # obs³uga zdarzeñ generowanych przez gracza
+    for event in pygame.event.get():
+        # przechwyæ zamkniêcie okna
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+
+        if event.type == KEYDOWN and event.key == K_RETURN:
+            zycie_trwa = True
+
+        if zycie_trwa is False:
+            if event.type == MOUSEBUTTONDOWN:
+                przycisk_wdol = True
+                przycisk_typ = event.button
+
+            if event.type == MOUSEBUTTONUP:
+                przycisk_wdol = False
+
+            if przycisk_wdol:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                mouse_x = int(mouse_x / ROZ_KOM)
+                mouse_y = int(mouse_y / ROZ_KOM)
+                # lewy przycisk myszy o¿ywia
+                if przycisk_typ == 1:
+                    POLE_GRY[mouse_x][mouse_y] = KOM_ZYWA
+                # prawy przycisk myszy uœmierca
+                if przycisk_typ == 3:
+                    POLE_GRY[mouse_x][mouse_y] = KOM_MARTWA
+
+    if zycie_trwa is True:
+        POLE_GRY = przygotuj_populacje(POLE_GRY)
+
+    OKNOGRY.fill((0, 0, 0))  # ustaw kolor okna gry
+    rysuj_populacje()
+    pygame.display.update()
+    pygame.time.delay(100)
