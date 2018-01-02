@@ -1,7 +1,6 @@
 #spadaj 
 #include <conio.h>
- sasdasdasdasd
- asdasdasdasdsadfgsgadfghadrg
+zmiany w nowym branchu
 using namespace std;
  dsasdasdasdasdd
  
