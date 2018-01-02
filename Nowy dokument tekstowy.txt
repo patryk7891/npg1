@@ -1,11 +1,11 @@
-#spadaj 
+chyba ty
 #include <conio.h>
 master
 galaz
 char plansza[30][30];
 char map[40][20];
  11111111111111111111111111111111111111111111111111111111111
- 123
+ 456
 /////////////// WYPISZ
 void wypisz()
 {
