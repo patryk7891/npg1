@@ -1,4 +1,4 @@
-#include <stdio.h>aSSAD
+#include <stdio.h> mikfmvsbndknb
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
