@@ -1,7 +1,7 @@
 #spadaj 
 #include <conio.h>
 master
- 
+
 char plansza[30][30];
 char map[40][20];
  
