@@ -1,4 +1,4 @@
-#include <stdio.h> DASDSADASASDAS
+#include <stdio.h> TO JESZCZE RAZ ZMIENIAM
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
