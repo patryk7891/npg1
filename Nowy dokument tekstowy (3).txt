@@ -1,9 +1,9 @@
-#include <stdio.h>
+#include <stdio.h>aSSAD
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
 #include <conio.h>
- 
+
 /* Funkcja czyszc¹ca planszê */
 void wyczysc (char plansza[3][3])
 {
