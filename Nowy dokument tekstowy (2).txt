@@ -3,7 +3,7 @@
  nowa galaz
  
 using namespace std;
- 
+ 123
  
 char plansza[30][30];
 char map[40][20];
